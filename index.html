@@ -398,6 +398,11 @@ footer{padding:44px 60px;border-top:1px solid var(--border);background:var(--bg2
     </div>
     <div class="meta-divider"></div>
     <div class="hero-meta-item">
+      <div class="meta-val">€10</div>
+      <div class="meta-label">Entry Fee</div>
+    </div>
+    <div class="meta-divider"></div>
+    <div class="hero-meta-item">
       <div class="meta-val">🌐</div>
       <div class="meta-label">Online Groups</div>
     </div>
@@ -434,6 +439,7 @@ footer{padding:44px 60px;border-top:1px solid var(--border);background:var(--bg2
   </div>
   <div class="countdown-register">
     <div class="reg-spots">▶ <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=xQ4KNpTw8UWjGcbcNWAnBBxdXCg_s6ZGgn0z2tmqbvVUOVBDUFAxMjhKOVBNUkkzRjBBNFFOUjFYTi4u" target="_blank" style="color:var(--cyan);text-decoration:none;">SIGN UP YOUR TEAM NOW →</a></div>
+    <div style="font-family:'Share Tech Mono',monospace;font-size:0.62rem;color:var(--purple);margin-top:5px;margin-bottom:8px;letter-spacing:0.08em;">💶 Entry fee: €10 per team</div>
     <div class="reg-bar-wrap"><div class="reg-bar"></div></div>
   </div>
 </div>
@@ -725,7 +731,7 @@ footer{padding:44px 60px;border-top:1px solid var(--border);background:var(--bg2
       <span class="sponsor-or">Get in touch via</span>
       <button class="btn-fire" onclick="openSponsorModal()">Contact Form</button>
       <span class="sponsor-or">or directly at</span>
-      <a href="mailto:luxembourgcsmasters@gmail.com" class="sponsor-cta-email">luxembourgcsmasters@gmail.com</a>
+      <a href="mailto:LuxembourgCSMasters@gmail.com?subject=Sponsorship%20Inquiry" class="sponsor-cta-email">LuxembourgCSMasters@gmail.com</a>
     </div>
   </div>
 </section>
@@ -820,8 +826,8 @@ footer{padding:44px 60px;border-top:1px solid var(--border);background:var(--bg2
       <div class="footer-col-title">Get Involved</div>
       <ul class="footer-links">
         <li><a href="https://forms.office.com/Pages/ResponsePage.aspx?id=xQ4KNpTw8UWjGcbcNWAnBBxdXCg_s6ZGgn0z2tmqbvVUOVBDUFAxMjhKOVBNUkkzRjBBNFFOUjFYTi4u" target="_blank">Sign Up Your Team</a></li>
-        <li><a href="/cdn-cgi/l/email-protection#632f161b060e010c16110420302e02101706111023040e020a0f4d000c0e">Become a Sponsor</a></li>
-        <li><a href="/cdn-cgi/l/email-protection#0549707d6068676a707762465648647671607776456268646c692b666a68">Contact Us</a></li>
+        <li><a href="mailto:LuxembourgCSMasters@gmail.com?subject=Sponsorship%20Inquiry">Become a Sponsor</a></li>
+        <li><a href="mailto:LuxembourgCSMasters@gmail.com?subject=Contact%20Inquiry">Contact Us</a></li>
       </ul>
     </div>
   </div>
@@ -831,7 +837,7 @@ footer{padding:44px 60px;border-top:1px solid var(--border);background:var(--bg2
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 const cursor=document.getElementById('cursor'),ring=document.getElementById('cursorRing');
 let mx=0,my=0,rx=0,ry=0;
 document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cursor.style.left=mx+'px';cursor.style.top=my+'px';});
@@ -917,8 +923,10 @@ function submitSponsorForm(){
   if(!company){errEl.textContent='Please enter your company or name.';errEl.style.display='block';return;}
   if(!email||!/^[^@]+@[^@]+\.[^@]+$/.test(email)){errEl.textContent='Please enter a valid email address.';errEl.style.display='block';return;}
   if(!inquiry){errEl.textContent='Please describe your inquiry.';errEl.style.display='block';return;}
-  if(!message){errEl.textContent='Please enter a message.';errEl.style.display='block';return;}
-  // Show success (in a real deployment, send to backend/formspree here)
+  if(!message){errEl.textContent='Please enter a message.';play='block';return;}
+  const subject=encodeURIComponent('Sponsorship Inquiry - '+inquiry);
+  const body=encodeURIComponent('Company/Name: '+company+'\nPhone: '+document.getElementById('f-phone').value.trim()+'\nInquiry: '+inquiry+'\n\nMessage:\n'+message);
+  window.location.href='mailto:LuxembourgCSMasters@gmail.com?subject='+subject+'&body='+body;
   document.getElementById('modalFormView').style.display='none';
   document.getElementById('modalSuccessView').style.display='block';
 }
